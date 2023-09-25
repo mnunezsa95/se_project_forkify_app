@@ -2866,16 +2866,41 @@ exports.default = new RecipeView();
 },{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","fractional":"3SU56","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5cUXS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvg = require("url:../../img/icons.svg"); // Parcel 2
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
-    render(data) {
-        if (!data || Array.isArray(data) && data.length === 0) return this.renderError(this._errorMessage);
+    /**
+   * Render the received object to the DOM
+   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
+   * @param {boolean} [render=true] If false, create markup string instead of rendering to the DOM
+   * @returns {undefined | string} A markup string is returned if render=false
+   * @this {Object} View instance
+   * @author Jonas Schmedtmann
+   * @todo Finish implementation
+   */ render(data, render = true) {
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data;
         const markup = this._generateMarkup();
+        if (!render) return markup;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    update(data) {
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+        const newDOM = document.createRange().createContextualFragment(newMarkup);
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const curElements = Array.from(this._parentElement.querySelectorAll("*"));
+        newElements.forEach((newEl, i)=>{
+            const curEl = curElements[i];
+            // console.log(curEl, newEl.isEqualNode(curEl));
+            // Updates changed TEXT
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== "") // console.log('💥', newEl.firstChild.nodeValue.trim());
+            curEl.textContent = newEl.textContent;
+            // Updates changed ATTRIBUES
+            if (!newEl.isEqualNode(curEl)) Array.from(newEl.attributes).forEach((attr)=>curEl.setAttribute(attr.name, attr.value));
+        });
     }
     _clear() {
         this._parentElement.innerHTML = "";
@@ -2886,34 +2911,36 @@ class View {
         <svg>
           <use href="${(0, _iconsSvgDefault.default)}#icon-loader"></use>
         </svg>
-      </div> 
+      </div>
     `;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
     renderError(message = this._errorMessage) {
         const markup = `
-    <div class="error">
-      <div>
-        <svg>
-          <use href="${(0, _iconsSvgDefault.default)}#icon-alert-triangle"></use>
-        </svg>
+      <div class="error">
+        <div>
+          <svg>
+            <use href="${(0, _iconsSvgDefault.default)}#icon-alert-triangle"></use>
+          </svg>
+        </div>
+        <p>${message}</p>
       </div>
-      <p>${message}</p>
-    </div>`;
+    `;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
-    renderSuccessMessage(message = this._successMessage) {
+    renderMessage(message = this._message) {
         const markup = `
-    <div class="message">
-      <div>
-        <svg>
-          <use href="${(0, _iconsSvgDefault.default)}#icon-smile"></use>
-        </svg>
+      <div class="message">
+        <div>
+          <svg>
+            <use href="${(0, _iconsSvgDefault.default)}#icon-smile"></use>
+          </svg>
+        </div>
+        <p>${message}</p>
       </div>
-      <p>${successMessage}</p>
-    </div>`;
+    `;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
@@ -3215,17 +3242,17 @@ module.exports.Fraction = Fraction;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SearchView {
-    _parentEl = document.querySelector(".search");
+    _parentElement = document.querySelector(".search");
     getQuery() {
-        const query = this._parentEl.querySelector(".search__field").value;
+        const query = this._parentElement.querySelector(".search__field").value;
         this._clearInput();
         return query;
     }
     _clearInput() {
-        this._parentEl.querySelector(".search__field").value = "";
+        this._parentElement.querySelector(".search__field").value = "";
     }
     addHandlerSearch(handler) {
-        this._parentEl.addEventListener("submit", function(e) {
+        this._parentElement.addEventListener("submit", function(e) {
             e.preventDefault();
             handler();
         });
