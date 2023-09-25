@@ -21,10 +21,12 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
+    // resultsView.renderSpinner();
     const query = SearchView.getQuery();
     if (!query) return;
     await model.loadSearchResults(query);
-    console.log(model.state.search.results);
+    // resultsView.render(model.getSearchResultsPage());
+    // paginationView.render(model.state.search);
   } catch (err) {
     console.log(err);
   }
