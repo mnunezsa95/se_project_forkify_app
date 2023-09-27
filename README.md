@@ -18,7 +18,7 @@ The Forkify application uses HTML, CSS, Sass, JavaScript, ES6 Classes, and parce
 
 ### Links
 
-The project is hosted on GitHub Pages and can be seen live using the this [link]().
+The project is hosted on Netlify and can be seen live using the this [link](https://forkify-marlon-nunez.netlify.app/).
 The Forkify API (used to work with recipes) can be found [here](https://forkify-api.herokuapp.com/)
 
 ### Copyright
@@ -27,6 +27,18 @@ The project concept, design and starter code (HTML & CSS) were created by Jonas 
 
 ### Plans for Improvement
 
-- The JavaScript portion of this project can be made more universal allowing it to be easier to maintain and scale.
-- As of right now, the user must navigate away from the application in order to see the actual directions for the recipe. In the future, the user would be able to click on a button to allow for a modal, with the directions to open up, allowing for a more user-friendly application.
-- A backend component can be added to the project to allow for users to create their own account on a local Node.js server. This will allow the application to be used by external users.
+Additions
+
+- Write documentation for the code base using JSdoc
+- Display the number of pages between the pagination buttons
+- Ability to sort search results by duration or number of ingredients of the recipe
+- Perform ingredient validation in viewm before form submission
+- Improve recipe ingredient input: separate into multiple fields and allow more than 6 ingredients
+
+Possible new features
+
+- Shopping list feature: button on recipe to add ingredients to a lisT
+- Weekly meal planning feature: assign recipes to the next 7-days and show on a weekly calendar
+- Get nutrition data on each ingredient from spoonacular API and calculate total calories of a recipe
+- A modal that pops up with directions for creating the recipe
+- A backend component can be added to the project to allow for users to create their own account on a local Node.js server.
