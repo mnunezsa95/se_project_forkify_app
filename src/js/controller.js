@@ -7,10 +7,6 @@ import PaginationView from "./views/PaginationView.js";
 import BookmarksView from "./views/BookmarksView.js";
 import AddRecipeView from "./views/AddRecipeView.js";
 
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
-// import { async } from "regenerator-runtime";
-
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
