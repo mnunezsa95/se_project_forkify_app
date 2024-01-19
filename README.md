@@ -20,8 +20,8 @@ Technologically, the Forkify application employs HTML, CSS, Sass, and JavaScript
 
 ### Links
 
-The [live](https://forkify-marlon-nunez.netlify.app/) project is hosted on Netlify.
-The Forkify API (used to work with recipes) can be found [here](https://forkify-api.herokuapp.com/)
+- The [live](https://forkify-marlon-nunez.netlify.app/) project is hosted on Netlify.
+- The Forkify API (used to work with recipes) can be found [here](https://forkify-api.herokuapp.com/)
 
 ### Copyright
 
