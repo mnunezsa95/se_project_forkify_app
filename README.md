@@ -4,6 +4,7 @@
 
 - Intro - About the project
 - Description of the Project
+- Technologies
 - Links
 - Copyright
 - Plans for Improvement
@@ -17,6 +18,10 @@ The Forkify web application empowers users to search for recipes using its built
 This application facilitates user interaction with an external API, specifically the Forkify API, by utilizing a query string. Upon user input, the API returns recipe results matching the provided keyword, which are then rendered on the screen. Users can select a recipe to access detailed instructions, including ingredients and step-by-step directions.
 
 Technologically, the Forkify application employs HTML, CSS, Sass, and JavaScript, leveraging ES6 Classes for a modern application structure. The build process is managed by Parcel. The application dynamically pulls and displays recipes from the Forkify API, courtesy of Jonas Schmedtmann. Notably, users can bookmark their preferred recipes for future reference, and there's a functionality allowing the creation and local saving of custom recipes.
+
+### Links
+
+- Frontend: HTML, CSS, JavaScript, Asynchronous JavaScript, Sass, ES6 Classes
 
 ### Links
 
