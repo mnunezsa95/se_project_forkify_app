@@ -9,7 +9,7 @@
 - Copyright
 - Plans for Improvement
 
-### Intro - About the project
+## Intro - About the project
 
 The Forkify web application empowers users to search for recipes using its built-in search engine. This engine sends the query string to an external API, fetching and displaying recipes associated with the specified keyword. Users can explore detailed recipe views and bookmark their favorites. Notably, when a user bookmarks a recipe, it gets saved to local storage. It's important to highlight that the current iteration of the application is exclusively built on the frontend, with all functionality residing in the client-side environment. Users are also able to submit their own recipes, but they are not saved since there is not database component on the backend at this time.
 
